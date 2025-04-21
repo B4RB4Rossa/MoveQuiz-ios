@@ -7,17 +7,16 @@ final class AlertPresenter {
         self.viewController = viewController
     }
     
-    func showAlert(model: AlertModel) {
+    func show(alert model: AlertModel) {
+        guard let vc = viewController else { return }
         let alert = UIAlertController(
             title: model.title,
             message: model.message,
-            preferredStyle: .alert)
-        
-        let action = UIAlertAction(title: model.buttonText, style: .default) { _ in
+            preferredStyle: .alert
+        )
+        alert.addAction(UIAlertAction(title: model.buttonText, style: .default) { _ in
             model.completion?()
-        }
-        
-        alert.addAction(action)
-        viewController?.present(alert, animated: true)
+        })
+        vc.present(alert, animated: true)
     }
 }

@@ -1,6 +1,5 @@
 import UIKit
 
-
 final class StatisticServiceImplementation: StatisticServiceProtocol {
     private let storage: UserDefaults = .standard
     
