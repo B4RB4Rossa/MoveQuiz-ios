@@ -4,6 +4,8 @@ import XCTest
 
 final class AlertTests: XCTestCase {
     
+    var app: XCUIApplication!
+    
     func testGameFinish() {
         sleep(2)
         for _ in 1...10 {
