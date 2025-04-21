@@ -2,7 +2,7 @@ import XCTest
 
 @testable import MovieQuiz
 
-class AlertTests: XCTestCase {
+final class AlertTests: XCTestCase {
     
     func testGameFinish() {
         sleep(2)

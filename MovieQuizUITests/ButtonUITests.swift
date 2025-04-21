@@ -2,7 +2,7 @@ import XCTest
 
 @testable import MovieQuiz
 
-class ButtonUITests: XCTestCase {
+final class ButtonUITests: XCTestCase {
 
     var app: XCUIApplication!
 

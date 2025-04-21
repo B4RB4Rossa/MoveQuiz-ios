@@ -17,7 +17,7 @@ final class MovieQuizViewController: UIViewController, MovieQuizViewProtocol {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        presenter = MovieQuizPresenter(viewController: self)
+        presenter = MovieQuizPresenter(view: self)
 
         imageView.layer.cornerRadius = 20
     }
@@ -42,22 +42,18 @@ final class MovieQuizViewController: UIViewController, MovieQuizViewProtocol {
     }
     
     func show(quiz result: QuizResultsViewModel) {
-        let message = presenter.makeResultsMessage()
-
         let alert = UIAlertController(
             title: result.title,
-            message: message,
-            preferredStyle: .alert)
+            message: result.text,
+            preferredStyle: .alert
+        )
 
-            let action = UIAlertAction(title: result.buttonText, style: .default) { [weak self] _ in
-                guard let self = self else { return }
-
-                self.presenter.restartGame()
-            }
+        let action = UIAlertAction(title: result.buttonText, style: .default) { [weak self] _ in
+            self?.presenter.restartGame()
+        }
 
         alert.addAction(action)
-
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true)
     }
 
     func highlightImageBorder(isCorrectAnswer: Bool) {
